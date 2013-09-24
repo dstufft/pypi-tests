@@ -22,12 +22,12 @@ import requests
 class TestSession(requests.Session):
 
     def request(self, method, url, *args, **kwargs):
-        if url.startswith("/") or not url:
+        if not urllib.parse.urlparse(url).netloc:
             url = urllib.parse.urljoin(self.simple_url, url)
 
         resp = super(TestSession, self).request(method, url, *args, **kwargs)
 
-        if resp.headers["Content-Type"].split(";")[0] in {"text/html"}:
+        if resp.headers.get("Content-Type", "").split(";")[0] in {"text/html"}:
             resp.html = lxml.html.fromstring(resp.content)
 
         return resp
