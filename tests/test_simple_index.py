@@ -23,5 +23,5 @@ def test_api_version(request):
     resp = request.get("/simple/")
 
     assert resp.status_code == 200
-    assert resp.headers["Content-Type"] == "text/html"
+    assert resp.headers["Content-Type"].split(";")[0] == "text/html"
     assert resp.html.xpath("//meta[@name='api-version']/@value") == ["2"]

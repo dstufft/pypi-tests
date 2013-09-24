@@ -27,7 +27,7 @@ class TestSession(requests.Session):
 
         resp = super(TestSession, self).request(method, url, *args, **kwargs)
 
-        if resp.headers["Content-Type"] in {"text/html"}:
+        if resp.headers["Content-Type"].split(";")[0] in {"text/html"}:
             resp.html = lxml.html.fromstring(resp.content)
 
         return resp
