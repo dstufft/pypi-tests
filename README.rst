@@ -12,7 +12,7 @@ Setup
 ~~~~~
 
 * There must be a package named ``pypi.testpkg`` on the index server with the
-versions ``1.0``, ``1.5``, and ``2.0`` uploaded as sdist's (tar.gz).
+  versions ``1.0``, ``1.5``, and ``2.0`` uploaded as sdist's (tar.gz).
 
 
 Execution
