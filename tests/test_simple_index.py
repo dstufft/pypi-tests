@@ -20,7 +20,7 @@ def test_api_version(request):
 
     At this time the only acceptable value is "2".
     """
-    resp = request.get("/simple/")
+    resp = request.get("")
 
     assert resp.status_code == 200
     assert resp.headers["Content-Type"].split(";")[0] == "text/html"

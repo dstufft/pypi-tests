@@ -22,8 +22,8 @@ import requests
 class TestSession(requests.Session):
 
     def request(self, method, url, *args, **kwargs):
-        if url.startswith("/"):
-            url = urllib.parse.urljoin(self.base_url, url)
+        if url.startswith("/") or not url:
+            url = urllib.parse.urljoin(self.simple_url, url)
 
         resp = super(TestSession, self).request(method, url, *args, **kwargs)
 
@@ -36,14 +36,15 @@ class TestSession(requests.Session):
 def pytest_addoption(parser):
     group = parser.getgroup("warehouse")
     group._addoption(
-        "--base-url",
-        dest="base_url",
-        help="The url that the acceptance tests should be run against.",
+        "--simple-url",
+        dest="simple_url",
+        help="The url that the simple index acceptance tests should be run "
+             "against.",
     )
 
 
 @pytest.fixture
 def request(pytestconfig):
     session = TestSession()
-    session.base_url = pytestconfig.option.base_url
+    session.simple_url = pytestconfig.option.simple_url
     return session

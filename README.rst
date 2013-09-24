@@ -14,4 +14,4 @@ are done the instance will be thrown away.
 .. code:: bash
 
     # Runs the tests against an index server available at http://example.com/
-    $ py.test --base-url http://example.com/
+    $ py.test --simple-url http://example.com/simple/
