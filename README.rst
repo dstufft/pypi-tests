@@ -4,12 +4,19 @@ PyPI Tests
 PyPI Tests is a collection of acceptance tests that can be ran against
 a Python Package Repository to determine if it is a compliant repository.
 
-Run the Tests
--------------
 
-The tests must be run against a sandboxed instance of the implementation to be
-tested. These tests will modify the instance and it is expected that after they
-are done the instance will be thrown away.
+Running the Tests
+-----------------
+
+Setup
+~~~~~
+
+* There must be a package named ``pypi.testpkg`` on the index server with the
+versions ``1.0``, ``1.5``, and ``2.0`` uploaded as sdist's (tar.gz).
+
+
+Execution
+~~~~~~~~~
 
 .. code:: bash
 
